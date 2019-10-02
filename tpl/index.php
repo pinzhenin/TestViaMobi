@@ -6,7 +6,7 @@
 </style>
 </head>
 <body>
-	<?=\test\S('Config')->customerName?>, Вы подписвны на сервис.<br/>
+	<?=\test\S('Config')->customerName?>, Вы подписаны на сервис.<br/>
 	<a href="<?=$glob['baseurl']?>/unsubscribe">Отписаться</a>
 </body>
 </html>

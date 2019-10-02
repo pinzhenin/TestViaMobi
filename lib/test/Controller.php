@@ -13,7 +13,7 @@ class Controller
 		$this->req = S('Request');
 		$action = $this->req->getDir(0);
 
-		if( ($action == 'brand1') || ($action == 'brand2') )
+		if( preg_match('/^brand\d+$/', $action) )
 		{
 			$this->tpl->setGlob('baseurl', "/$action");
 		}
