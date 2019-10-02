@@ -29,17 +29,17 @@ class Controller
 
 	protected function _subscribe()
 	{
-		$_SESSION['subs'] = 1;
+		$_SESSION['subs.'.S('Config')->subsId] = 1;
 	}
 
 	protected function _unsubscribe()
 	{
-		$_SESSION['subs'] = 0;
+		$_SESSION['subs.'.S('Config')->subsId] = 0;
 	}
 
 	private function _isSubscribed()
 	{
-		return isset($_SESSION['subs']) ? $_SESSION['subs'] : 0;
+		return isset($_SESSION['subs.'.S('Config')->subsId]) ? $_SESSION['subs.'.S('Config')->subsId] : 0;
 	}
 
 	private function _performChecks()

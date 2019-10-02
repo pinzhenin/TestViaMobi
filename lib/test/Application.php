@@ -26,7 +26,7 @@ class Application extends Singleton
 			$dirs[] = S('Config')->defaultAction;
 		}
 		$action = array_shift($dirs);
-		
+
 		if( !preg_match('#^\w+$#', $class) || !preg_match('#^\w+$#', $action) )
 		{
 			Response::headerForbidden();
