@@ -7,8 +7,9 @@ class Config extends Singleton
 	protected $_cfgdir = 'cfg';
 	protected $_config = array();
 	protected $_name;
+	private static $_instance;
 
-	public function __construct()
+	private function __construct()
 	{
 		$this->_use('default');
 	}
@@ -20,7 +21,7 @@ class Config extends Singleton
 		$this->_name = $name;
 	}
 
-        public function apply($name)
+	public function apply($name)
 	{
 		$name = "{$this->_name}-$name";
 		$this->_use($name, true);
@@ -36,9 +37,9 @@ class Config extends Singleton
 		return $this->_config[$name];
 	}
 
-        protected function _use($name, $incremental = false)
+	protected function _use($name, $incremental = false)
 	{
-		$name = preg_replace('#[^\w-.]#', '', $name);
+		$name = preg_replace('#[^\w.-]#', '', $name);
 		$filename = PROJECTROOT . "/{$this->_cfgdir}/$name.php";
 
 		if( !is_readable($filename) )
@@ -50,4 +51,15 @@ class Config extends Singleton
 			? array_merge($this->_config, include($filename))
 			: include($filename);
 	}
+
+	public static function getInstance()
+	{
+		if( !isset(self::$_instance) )
+		{
+			self::$_instance = new self;
+		}
+
+		return self::$_instance;
+	}
+
 }

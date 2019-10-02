@@ -13,7 +13,7 @@ class Loader
 
     public static function includeClass($class)
     {
-        require_once(PROJECTROOT . '/' . self::$_libdir . '/' . strtr($class, '_\\', '//') . '.php');
+        require_once(PROJECTROOT . '/' . self::$_libdir . '/' . strtr($class, '\\', '/') . '.php');
     }
 }
 
