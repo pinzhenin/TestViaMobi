@@ -45,7 +45,7 @@ class Controller
 	private function _performChecks()
 	{
 		$action = S('Request')->getDir(0);
-		if( ($action == 'brand1') || ($action == 'brand2') )
+		if( preg_match('/^brand\d+$/', $action) )
 		{
 			$action = S('Request')->getDir(1);
 		}
